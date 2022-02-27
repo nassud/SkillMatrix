@@ -1,0 +1,14 @@
+<header>Encabezado</header>
+
+<aside id="featured" class="body">
+  <div class="example-button-row">
+    <button [routerLink]="'/home'" mat-button>Inicio</button>
+    <button [routerLink]="'/employees'" mat-button>Empleados</button>
+    <button [routerLink]="'/skills'" mat-button>Habilidades</button>
+  </div>
+</aside>
+<section>
+  <router-outlet></router-outlet>
+</section>
+
+<footer>El pie de página</footer>
