@@ -1,1 +1,19 @@
-<p>employees works!</p>
+<h2>Empleados</h2>
+<p-table [value]="employees" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Skills</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-employee>
+    <tr>
+      <td>{{ employee.id }}</td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.skills }}</td>
+    </tr>
+  </ng-template>
+</p-table>

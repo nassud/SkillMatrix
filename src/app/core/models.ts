@@ -1,16 +1,16 @@
-enum SkillLevel {
+export enum SkillLevel {
   BEGINNER,
   INTERMEDIATE,
   ADVANCED,
 }
 
-interface Skill {
+export interface Skill {
   id: number;
   name: string;
   level: SkillLevel;
 }
 
-interface Employee {
+export interface Employee {
   id: number;
   name: string;
   lastName: string;
