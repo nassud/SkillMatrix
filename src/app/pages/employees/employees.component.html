@@ -1,23 +1,33 @@
 <h2>Empleados</h2>
 
-<p-card>
+<p-card header="Agregar nuevo empleado">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <span class="p-float-label">
-      <input id="float-input" type="text" pInputText />
+      <input id="float-input" type="text" pInputText formControlName="name" />
       <label for="float-input">Nombre</label>
     </span>
     <span class="p-float-label">
-      <input id="float-input" type="text" pInputText />
+      <input
+        id="float-input"
+        type="text"
+        pInputText
+        formControlName="lastName"
+      />
       <label for="float-input">Apellido</label>
     </span>
+    <span class="p-float-label">
+      <p-multiSelect
+        [options]="skills"
+        formControlName="skills"
+        optionLabel="name"
+        display="chip"
+      >
+      </p-multiSelect>
+    </span>
+    <p-button class="btn btn-primary" [disabled]="form.invalid" type="submit">
+      Enviar
+    </p-button>
   </form>
-  <p-multiSelect
-    [options]="skills"
-    [(ngModel)]="selectedSkills"
-    optionLabel="name"
-    display="chip"
-  >
-  </p-multiSelect>
 </p-card>
 
 <p-table [value]="employees" responsiveLayout="scroll">
