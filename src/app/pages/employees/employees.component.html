@@ -1,4 +1,25 @@
 <h2>Empleados</h2>
+
+<p-card>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <span class="p-float-label">
+      <input id="float-input" type="text" pInputText />
+      <label for="float-input">Nombre</label>
+    </span>
+    <span class="p-float-label">
+      <input id="float-input" type="text" pInputText />
+      <label for="float-input">Apellido</label>
+    </span>
+  </form>
+  <p-multiSelect
+    [options]="skills"
+    [(ngModel)]="selectedSkills"
+    optionLabel="name"
+    display="chip"
+  >
+  </p-multiSelect>
+</p-card>
+
 <p-table [value]="employees" responsiveLayout="scroll">
   <ng-template pTemplate="header">
     <tr>
