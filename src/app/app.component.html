@@ -1,14 +1,46 @@
-<header>Encabezado</header>
-
-<aside id="featured" class="body">
-  <div class="example-button-row">
-    <button [routerLink]="'/home'" mat-button>Inicio</button>
-    <button [routerLink]="'/employees'" mat-button>Empleados</button>
-    <button [routerLink]="'/skills'" mat-button>Habilidades</button>
+<body>
+  <header style="height: 100px; width: 100%; background-color: #607d8b">
+    <h1
+      style="
+        color: #fff;
+        text-align: center;
+        padding-top: 25px;
+        font-size: 30px;
+      "
+    >
+      Skill Matrix
+    </h1>
+  </header>
+  <nav style="background-color: #607d8b9c">
+    <ul>
+      <li><a [routerLink]="'/home'"> Inicio </a></li>
+      <li><a [routerLink]="'/employees'"> Empleados </a></li>
+      <li><a [routerLink]="'/skills'"> Habilidades </a></li>
+    </ul>
+  </nav>
+  <div class="main">
+    <article>
+      <router-outlet></router-outlet>
+    </article>
   </div>
-</aside>
-<section>
-  <router-outlet></router-outlet>
-</section>
-
-<footer>El pie de página</footer>
+  <footer
+    style="
+      height: 100px;
+      background-color: #607d8b;
+      width: 100%;
+      text-align: center;
+    "
+  >
+    <h3
+      style="
+        color: #fff;
+        text-align: center;
+        padding-top: 10px;
+        font-size: 30px;
+      "
+    >
+      Desarrollado por The Dussán Company
+    </h3>
+    <p>© Copyright ( 2022 )</p>
+  </footer>
+</body>
