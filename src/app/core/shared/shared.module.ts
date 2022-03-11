@@ -6,6 +6,7 @@ import { ButtonModule } from "primeng/button";
 import { InputTextModule } from "primeng/inputtext";
 import { CardModule } from "primeng/card";
 import { MultiSelectModule } from "primeng/multiselect";
+import { ChipModule } from "primeng/chip";
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import { MultiSelectModule } from "primeng/multiselect";
     DialogModule,
     CardModule,
     MultiSelectModule,
+    ChipModule,
   ],
 })
 export class SharedModule {}

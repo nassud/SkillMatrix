@@ -11,7 +11,7 @@ export interface Skill {
 }
 
 export interface Employee {
-  id: number;
+  id: string;
   name: string;
   lastName: string;
   skills: Skill[];

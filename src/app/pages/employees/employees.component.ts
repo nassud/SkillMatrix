@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Employee, Skill, SkillLevel } from "src/app/core/models";
+import { EmployeesService } from "src/app/core/services/employees.service";
 
 @Component({
   selector: "app-employees",
@@ -8,9 +9,9 @@ import { Employee, Skill, SkillLevel } from "src/app/core/models";
   styleUrls: ["./employees.component.scss"],
 })
 export class EmployeesComponent implements OnInit {
-  employees!: Employee[];
+  employeesService: EmployeesService;
 
-  newEmployee!: Employee;
+  selectedEmployee: Employee | undefined;
   skills!: Skill[];
   selectedSkills!: Skill[];
 
@@ -23,7 +24,9 @@ export class EmployeesComponent implements OnInit {
     skills: new FormControl("", Validators.required),
   });
 
-  constructor() {}
+  constructor(employeesService: EmployeesService) {
+    this.employeesService = employeesService;
+  }
 
   ngOnInit(): void {
     this.skills = [
@@ -38,18 +41,38 @@ export class EmployeesComponent implements OnInit {
         level: SkillLevel.INTERMEDIATE,
       },
     ];
-
-    this.employees = [
-      {
-        id: 1,
-        name: "Nicolás",
-        lastName: "Dussán",
-        skills: [],
-      },
-    ];
   }
 
   submit() {
-    console.log(this.form.value);
+    if (this.selectedEmployee) {
+      this.employeesService.updateEmployee({
+        ...this.form.value,
+        id: this.selectedEmployee.id,
+      });
+      this.selectedEmployee = undefined;
+    } else {
+      this.employeesService.addEmployee(this.form.value);
+    }
+    this.form.reset();
+  }
+
+  handleUpdate(id: string) {
+    this.selectedEmployee = this.employeesService.employees.find(
+      (emp) => emp.id === id
+    );
+    if (this.selectedEmployee) {
+      this.form.controls["name"].setValue(this.selectedEmployee.name);
+      this.form.controls["lastName"].setValue(this.selectedEmployee.lastName);
+      this.form.controls["skills"].setValue(this.selectedEmployee.skills);
+    }
+  }
+
+  handleDelete(id: string) {
+    this.employeesService.deleteEmployee(id);
+  }
+
+  handleCancel() {
+    this.selectedEmployee = undefined;
+    this.form.reset();
   }
 }
