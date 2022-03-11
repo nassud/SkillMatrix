@@ -11,12 +11,63 @@
       Skill Matrix
     </h1>
   </header>
-  <nav style="background-color: #607d8b9c">
-    <ul>
-      <li><a [routerLink]="'/home'"> Inicio </a></li>
-      <li><a [routerLink]="'/employees'"> Empleados </a></li>
-      <li><a [routerLink]="'/skills'"> Habilidades </a></li>
-    </ul>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Auth</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="Public">Public</a>
+          </li>
+          <li
+            class="nav-item"
+            routerLinkActive="active"
+            *ngIf="auth.isAuthenticated$ | async"
+          >
+            <a class="nav-link" routerLink="Private">Private</a>
+          </li>
+        </ul>
+        <ul>
+          <li><a [routerLink]="'/home'"> Inicio </a></li>
+          <li><a [routerLink]="'/employees'"> Empleados </a></li>
+          <li><a [routerLink]="'/skills'"> Habilidades </a></li>
+        </ul>
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>
+      </div>
+    </div>
+    <button
+      class="btn btn-primary"
+      (click)="loginWithRedirect()"
+      *ngIf="!(auth.isAuthenticated$ | async)"
+    >
+      Ingresar
+    </button>
+    <button
+      class="btn btn-warning"
+      (click)="logout()"
+      *ngIf="auth.isAuthenticated$ | async"
+    >
+      Salir
+    </button>
   </nav>
   <div class="main">
     <article>
