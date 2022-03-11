@@ -54,7 +54,10 @@ export class EmployeesService {
     this.employees = this.employees.filter((employee) => employee.id !== id);
   }
 
-  updateEmployee(employee: Employee) {}
+  updateEmployee(employee: Employee) {
+    const index = this.employees.findIndex((emp) => emp.id === employee.id);
+    this.employees[index] = employee;
+  }
 
   addEmployee(employee: Employee) {
     this.employees = [
