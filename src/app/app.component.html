@@ -12,7 +12,7 @@
     </h1>
   </header>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand">Skill Matrix</a>
       <button
@@ -28,46 +28,42 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="Public">Public</a>
-          </li>
           <li
             class="nav-item"
             routerLinkActive="active"
             *ngIf="auth.isAuthenticated$ | async"
           >
-            <a class="nav-link" routerLink="Private">Private</a>
+            <a class="nav-link" [routerLink]="'/private'"
+              >Información de Usuario</a
+            >
           </li>
         </ul>
-        <ul>
+        <ul style="height: 55px">
           <li><a [routerLink]="'/home'"> Inicio </a></li>
           <li><a [routerLink]="'/employees'"> Empleados </a></li>
           <li><a [routerLink]="'/skills'"> Habilidades </a></li>
         </ul>
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </form>
       </div>
     </div>
-    <button
-      class="btn btn-primary"
-      (click)="loginWithRedirect()"
-      *ngIf="!(auth.isAuthenticated$ | async)"
-    >
-      Ingresar
-    </button>
-    <button
-      class="btn btn-warning"
-      (click)="logout()"
-      *ngIf="auth.isAuthenticated$ | async"
-    >
-      Salir
-    </button>
+    <div style="width: 350px" *ngIf="auth.user$ | async as user">
+      ¡Hola {{ user.name }}!
+    </div>
+    <div style="margin-right: 15px">
+      <button
+        class="btn btn-primary"
+        (click)="loginWithRedirect()"
+        *ngIf="!(auth.isAuthenticated$ | async)"
+      >
+        Ingresar
+      </button>
+      <button
+        class="btn btn-warning"
+        (click)="logout()"
+        *ngIf="auth.isAuthenticated$ | async"
+      >
+        Salir
+      </button>
+    </div>
   </nav>
   <div class="main">
     <article>
@@ -80,9 +76,11 @@
       background-color: #607d8b;
       width: 100%;
       text-align: center;
+      position: absolute;
+      bottom: 0;
     "
   >
-    <footer
+    <h3
       style="
         color: #fff;
         text-align: center;
@@ -91,7 +89,7 @@
       "
     >
       Desarrollado por The Dussán Company
-    </footer>
+    </h3>
     <p>© Copyright ( 2022 )</p>
   </footer>
 </body>

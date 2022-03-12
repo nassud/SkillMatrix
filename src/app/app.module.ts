@@ -11,9 +11,10 @@ import { SkillsComponent } from "./pages/skills/skills.component";
 import { AuthModule } from "@auth0/auth0-angular";
 import { PublicComponent } from './components/public/public.component';
 import { PrivateComponent } from './components/private/private.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, EmployeesComponent, SkillsComponent, PublicComponent, PrivateComponent],
+  declarations: [AppComponent, EmployeesComponent, SkillsComponent, PublicComponent, PrivateComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -7,11 +7,17 @@ import { SkillsComponent } from "./pages/skills/skills.component";
 // import { AuthGuard } from "@auth0/auth0-angular";
 
 import { AuthGuard } from "./guards/auth.guard";
+import { HomeComponent } from "./pages/home/home.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "employees", component: EmployeesComponent },
-  { path: "skills", component: SkillsComponent },
+  { path: "home", component: HomeComponent },
+  {
+    path: "employees",
+    component: EmployeesComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: "skills", component: SkillsComponent, canActivate: [AuthGuard] },
   { path: "public", component: PublicComponent },
   { path: "private", component: PrivateComponent, canActivate: [AuthGuard] },
   { path: "**", pathMatch: "full", redirectTo: "public" },
