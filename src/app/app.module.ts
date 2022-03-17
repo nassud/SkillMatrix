@@ -9,18 +9,21 @@ import { EmployeesComponent } from "./pages/employees/employees.component";
 import { SkillsComponent } from "./pages/skills/skills.component";
 // Import the module from the SDK
 import { AuthModule } from "@auth0/auth0-angular";
-import { PublicComponent } from './components/public/public.component';
-import { PrivateComponent } from './components/private/private.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from "./pages/home/home.component";
 
 @NgModule({
-  declarations: [AppComponent, EmployeesComponent, SkillsComponent, PublicComponent, PrivateComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    EmployeesComponent,
+    SkillsComponent,
+    HomeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    // Import the module into the application, with configuration
+    // Import el módulo de Auth0
     AuthModule.forRoot({
       domain: "skillmatrix.us.auth0.com",
       clientId: "15VUieutwpkfxgrp8KNHtyxB3U2GeK7O",

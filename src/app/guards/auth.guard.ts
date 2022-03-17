@@ -4,7 +4,6 @@ import {
   CanActivate,
   Router,
   RouterStateSnapshot,
-  UrlTree,
 } from "@angular/router";
 import { AuthService } from "@auth0/auth0-angular";
 import { Observable } from "rxjs";
@@ -22,10 +21,7 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> | boolean {
     return this.auth.isAuthenticated$.pipe(
       tap((loggedIn) => {
-        if (loggedIn) {
-          console.log("Acceso Permitido");
-        } else {
-          console.log("Acceso no autorizado");
+        if (!loggedIn) {
           this.auth.loginWithRedirect();
         }
       })
