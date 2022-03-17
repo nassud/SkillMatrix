@@ -32,12 +32,42 @@ export class EmployeesComponent implements OnInit {
     this.skills = [
       {
         id: 1,
-        name: "Java",
+        name: "React",
         level: SkillLevel.ADVANCED,
       },
       {
         id: 2,
-        name: "PHP",
+        name: "Angular",
+        level: SkillLevel.INTERMEDIATE,
+      },
+      {
+        id: 3,
+        name: "Vue",
+        level: SkillLevel.ADVANCED,
+      },
+      {
+        id: 4,
+        name: "Html",
+        level: SkillLevel.INTERMEDIATE,
+      },
+      {
+        id: 5,
+        name: "Css",
+        level: SkillLevel.ADVANCED,
+      },
+      {
+        id: 6,
+        name: "JavaScript",
+        level: SkillLevel.INTERMEDIATE,
+      },
+      {
+        id: 7,
+        name: "TypeScript",
+        level: SkillLevel.ADVANCED,
+      },
+      {
+        id: 8,
+        name: "Flutter",
         level: SkillLevel.INTERMEDIATE,
       },
     ];
