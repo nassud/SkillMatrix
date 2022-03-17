@@ -11,30 +11,13 @@ export class EmployeesService {
       id: uuid.v4(),
       name: "Nicolás",
       lastName: "Dussán",
-      skills: [
-        {
-          id: 1,
-          name: "Java",
-          level: SkillLevel.ADVANCED,
-        },
-        {
-          id: 2,
-          name: "PHP",
-          level: SkillLevel.INTERMEDIATE,
-        },
-      ],
+      skills: [],
     },
     {
       id: uuid.v4(),
       name: "Sebastián",
       lastName: "Gómez",
-      skills: [
-        {
-          id: 2,
-          name: "PHP",
-          level: SkillLevel.INTERMEDIATE,
-        },
-      ],
+      skills: [],
     },
   ];
 

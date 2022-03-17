@@ -1,1 +1,69 @@
 <h2>Habilidades</h2>
+
+<p-card class="Content" header="Agregar nueva habilidad">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <span class="p-float-label">
+      <input id="float-input" type="text" pInputText formControlName="name" />
+      <label for="float-input">Nombre</label>
+    </span>
+    <span class="p-float-label"
+      ><p-selectButton
+        [options]="levelsList"
+        formControlName="level"
+      ></p-selectButton>
+    </span>
+    <button
+      pButton
+      class="btn btn-primary"
+      [disabled]="form.invalid"
+      type="submit"
+    >
+      Enviar
+    </button>
+    <button
+      pButton
+      type="button"
+      class="btn p-button-secondary"
+      (click)="handleCancel()"
+    >
+      Cancelar
+    </button>
+  </form>
+  <p-table
+    class="Table"
+    [value]="skillsService.skills"
+    responsiveLayout="scroll"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Nivel</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-skill>
+      <tr>
+        <td>{{ skill.id }}</td>
+        <td>{{ skill.name }}</td>
+        <td>{{ skill.level }}</td>
+        <td>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-info"
+            (click)="handleUpdate(skill.id)"
+          ></button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger"
+            (click)="handleDelete(skill.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
