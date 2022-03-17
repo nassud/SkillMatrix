@@ -1,11 +1,11 @@
 export enum SkillLevel {
-  BEGINNER,
-  INTERMEDIATE,
-  ADVANCED,
+  BEGINNER = "BEGINNER",
+  INTERMEDIATE = "INTERMEDIATE",
+  ADVANCED = "ADVANCED",
 }
 
 export interface Skill {
-  id: number;
+  id: string;
   name: string;
   level: SkillLevel;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Employee, Skill, SkillLevel } from "src/app/core/models";
 import { EmployeesService } from "src/app/core/services/employees.service";
+import { SkillsService } from "src/app/core/services/skills.service";
 
 @Component({
   selector: "app-employees",
@@ -10,9 +11,9 @@ import { EmployeesService } from "src/app/core/services/employees.service";
 })
 export class EmployeesComponent implements OnInit {
   employeesService: EmployeesService;
+  skillsService: SkillsService;
 
   selectedEmployee: Employee | undefined;
-  skills!: Skill[];
   selectedSkills!: Skill[];
 
   form = new FormGroup({
@@ -24,54 +25,15 @@ export class EmployeesComponent implements OnInit {
     skills: new FormControl("", Validators.required),
   });
 
-  constructor(employeesService: EmployeesService) {
+  constructor(
+    employeesService: EmployeesService,
+    skillsService: SkillsService
+  ) {
     this.employeesService = employeesService;
+    this.skillsService = skillsService;
   }
 
-  ngOnInit(): void {
-    this.skills = [
-      {
-        id: 1,
-        name: "React",
-        level: SkillLevel.ADVANCED,
-      },
-      {
-        id: 2,
-        name: "Angular",
-        level: SkillLevel.INTERMEDIATE,
-      },
-      {
-        id: 3,
-        name: "Vue",
-        level: SkillLevel.ADVANCED,
-      },
-      {
-        id: 4,
-        name: "Html",
-        level: SkillLevel.INTERMEDIATE,
-      },
-      {
-        id: 5,
-        name: "Css",
-        level: SkillLevel.ADVANCED,
-      },
-      {
-        id: 6,
-        name: "JavaScript",
-        level: SkillLevel.INTERMEDIATE,
-      },
-      {
-        id: 7,
-        name: "TypeScript",
-        level: SkillLevel.ADVANCED,
-      },
-      {
-        id: 8,
-        name: "Flutter",
-        level: SkillLevel.INTERMEDIATE,
-      },
-    ];
-  }
+  ngOnInit(): void {}
 
   submit() {
     if (this.selectedEmployee) {
